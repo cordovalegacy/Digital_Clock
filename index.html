@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            background: linear-gradient(to right, yellow, orange, red, black);
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            text-shadow: 0px 0px 5px white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span id="hrs">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+        <span id="session">AM</span>
+    </div>
+    <script>
+        function displayTime(){
+        var dateTime = new Date()
+        var hrs = dateTime.getHours()
+        var min = dateTime.getMinutes()
+        var sec = dateTime.getSeconds()
+        var session = document.getElementById('session')
+        // ----------------------------------------------- //
+        var hrsText = document.getElementById('hrs')
+        var minText = document.getElementById('min')
+        var secText = document.getElementById('sec')
+        // ----------------------------------------------- //
+        hrs >= 12 ? session.innerHTML = 'PM' : null
+        console.log(hrs)
+        hrs > 12 ? hrs = hrs -12 : null
+        sec < 10 ? sec = `0${sec}` : null
+        min < 10 ? min = `0${min}` : null
+        hrsText.innerHTML = hrs
+        minText.innerHTML = min
+        secText.innerHTML = sec
+        }
+        setInterval(displayTime, 100)
+    </script>
+</body>
+</html>
